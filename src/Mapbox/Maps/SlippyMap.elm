@@ -9,11 +9,11 @@ module Mapbox.Maps.SlippyMap exposing (Options, Position, Size, slippyMap)
 
 -}
 
-import Mapbox
-import Mapbox.Endpoint as Endpoint exposing (Endpoint, Maps)
+import Helpers
 import Html exposing (Html)
 import Html.Attributes
-import Helpers
+import Mapbox
+import Mapbox.Endpoint as Endpoint exposing (Endpoint, Maps)
 
 
 {-| Options you can use into slippy maps.
@@ -83,8 +83,8 @@ positionToUrl position =
 
 {-| Embed a slippy map into your Html view. As indicated in the Readme, you can easily use it like this:
 
-    import Mapbox.Maps.SlippyMap as Mapbox
     import Mapbox.Endpoint as Endpoint
+    import Mapbox.Maps.SlippyMap as Mapbox
 
     mapboxToken : String
     mapboxToken =
@@ -107,7 +107,7 @@ slippyMap :
     -> Html msg
 slippyMap endpoint accessToken options position { width, height } =
     Html.iframe
-        [ Html.Attributes.src (Mapbox.url endpoint accessToken (optionsToUrl options) (".html" ++ positionToUrl position) [])
+        [ Html.Attributes.src (Mapbox.url endpoint accessToken (optionsToUrl options) (positionToUrl position) [])
         , Html.Attributes.width width
         , Html.Attributes.height height
         ]

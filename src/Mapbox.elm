@@ -7,8 +7,8 @@ Generally, you don't need to use it. If you need to do it, please open an issue 
 
 -}
 
-import Mapbox.Endpoint as Endpoint exposing (Endpoint)
 import Helpers
+import Mapbox.Endpoint as Endpoint exposing (Endpoint)
 
 
 {-| Construct your own url to Mapbox, by warranting correct `endpoints`, `access_token`, and assuming that your options and format are correct. They must have beginning `/`, and parameters is List of assoc, associating name and value of the parameter, i.e. `(name, value)`
@@ -18,7 +18,7 @@ As described in the Readme, `url` constructs urls based on schema `https://api.m
 -}
 url : Endpoint a -> String -> String -> String -> List ( String, String ) -> String
 url endpoint accessToken options format parameters =
-    "https://api.mapbox.com/" ++ Endpoint.toUrl endpoint ++ options ++ format ++ "?access_token=" ++ accessToken ++ parametersToUrl parameters
+    "https://api.mapbox.com/" ++ Endpoint.toUrl endpoint ++ ".html?access_token=" ++ accessToken ++ parametersToUrl parameters ++ options ++ format
 
 
 parameterToUrl : ( String, String ) -> String
